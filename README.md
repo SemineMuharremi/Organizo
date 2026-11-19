@@ -1,5 +1,7 @@
 # Organizo
 
+**Live demo: [organizoapp.netlify.app](https://organizoapp.netlify.app)**
+
 A task manager that runs entirely in your browser, built with plain HTML, CSS and JavaScript modules. It has no framework, no build step and no npm dependencies. You can install it as an app, it works offline, and your data stays on your device.
 
 ![Organizo dashboard](docs/screenshots/desktop-light-dashboard.png)
