@@ -208,7 +208,3 @@ How it fits together:
 - If the same recurring task is completed in two tabs at almost the same moment, you could get two copies of the next task.
 - The first visit needs a connection (or a local server); offline use starts from the second load.
 - Inter is bundled for Latin scripts only (including Albanian, German, French, Turkish and similar). Other scripts fall back to the system font.
-
-## Notes
-
-The original prototype is kept in [_original/dashboard.html](_original/dashboard.html).
