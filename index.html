@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Organizo: a focused task manager for planning your day, projects and deadlines.">
+  <meta name="theme-color" content="#f7f7f8">
+  <title>Organizo</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Organizo">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- Apply the saved theme before first paint to avoid a light/dark flash. -->
+  <script>
+    (function () {
+      var theme = "system";
+      try { theme = JSON.parse(localStorage.getItem("organizo:data")).data.settings.theme || theme; } catch (e) {}
+      if (theme === "system") theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+
+  <link rel="preload" href="assets/fonts/material-symbols-rounded.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/views.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="is-loading">
+  <a class="skip-link" href="#view">Skip to content</a>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="sidebar-backdrop" data-action="close-sidebar" aria-hidden="true"></div>
+
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="icon-btn menu-btn" data-action="open-sidebar" aria-label="Open menu">
+          <span class="icon" aria-hidden="true">menu</span>
+        </button>
+        <div class="search">
+          <span class="icon" aria-hidden="true">search</span>
+          <label class="sr-only" for="search">Search tasks</label>
+          <input id="search" type="search" placeholder="Search tasks…" autocomplete="off" spellcheck="false">
+          <kbd class="search-kbd" aria-hidden="true">/</kbd>
+        </div>
+        <div class="topbar-actions">
+          <button type="button" class="icon-btn" data-action="toggle-theme" aria-label="Toggle theme">
+            <span class="icon" aria-hidden="true">dark_mode</span>
+          </button>
+          <div class="notif-anchor">
+            <button type="button" class="icon-btn notif-btn" data-action="toggle-notifications" aria-label="Notifications"
+              aria-haspopup="dialog" aria-expanded="false" aria-controls="notif-panel">
+              <span class="icon" aria-hidden="true">notifications</span>
+              <span class="notif-badge" aria-hidden="true" hidden>0</span>
+            </button>
+            <div class="notif-panel" id="notif-panel" role="dialog" aria-label="Notifications" hidden></div>
+          </div>
+          <button type="button" class="btn btn-primary new-task-btn" data-action="new-task-contextual">
+            <span class="icon" aria-hidden="true">add</span><span class="btn-label">New task</span>
+          </button>
+        </div>
+      </header>
+
+      <main id="view" class="view" tabindex="-1">
+        <div class="view-loading" role="status"><span class="spinner"></span><span class="sr-only">Loading</span></div>
+      </main>
+    </div>
+  </div>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+  <div id="sr-status" class="sr-only" role="status" aria-live="polite"></div>
+
+  <noscript><p class="noscript">Organizo needs JavaScript enabled to run.</p></noscript>
+</body>
+</html>

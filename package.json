@@ -1,0 +1,19 @@
+{
+  "name": "organizo",
+  "version": "2.1.0",
+  "description": "A modern task manager built with vanilla HTML, CSS and JavaScript modules.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "node --test tests/unit.test.mjs",
+    "test:e2e": "node tests/e2e.test.mjs",
+    "screenshots": "node tests/screenshots.mjs",
+    "icons:font": "node scripts/update-icon-font.mjs",
+    "icons:png": "node scripts/generate-icons.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
